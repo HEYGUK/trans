@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 留学生翻译助手</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>📚 留学生翻译助手</h1>
+            <p class="subtitle">学术翻译 · 论文润色 · 日常沟通 · 邮件撰写</p>
+        </header>
+
+        <!-- 工具栏 -->
+        <div class="toolbar">
+            <div class="tool-group">
+                <label>翻译模式</label>
+                <div class="mode-tabs">
+                    <button class="mode-tab active" data-mode="general">通用翻译</button>
+                    <button class="mode-tab" data-mode="academic">学术翻译</button>
+                    <button class="mode-tab" data-mode="daily">日常用语</button>
+                    <button class="mode-tab" data-mode="email">邮件翻译</button>
+                    <button class="mode-tab" data-mode="polish">论文润色</button>
+                </div>
+            </div>
+            <div class="tool-row">
+                <div class="tool-group">
+                    <label for="lang-pair">语言方向</label>
+                    <select id="lang-pair">
+                        <option value="auto">🔄 自动检测</option>
+                        <option value="zh-en">中文 → 英文</option>
+                        <option value="en-zh">英文 → 中文</option>
+                        <option value="zh-ja">中文 → 日文</option>
+                        <option value="ja-zh">日文 → 中文</option>
+                        <option value="zh-ko">中文 → 韩文</option>
+                        <option value="ko-zh">韩文 → 中文</option>
+                        <option value="zh-fr">中文 → 法文</option>
+                        <option value="fr-zh">法文 → 中文</option>
+                        <option value="zh-de">中文 → 德文</option>
+                        <option value="de-zh">德文 → 中文</option>
+                    </select>
+                </div>
+                <div class="tool-group">
+                    <label for="subject">学科领域（可选）</label>
+                    <select id="subject">
+                        <option value="">自动检测</option>
+                        <option value="计算机科学">计算机科学</option>
+                        <option value="经济学/金融">经济学/金融</option>
+                        <option value="医学/生物">医学/生物</option>
+                        <option value="法律">法律</option>
+                        <option value="工程学">工程学</option>
+                        <option value="心理学">心理学</option>
+                        <option value="教育学">教育学</option>
+                        <option value="文学/语言学">文学/语言学</option>
+                        <option value="物理学">物理学</option>
+                        <option value="化学">化学</option>
+                        <option value="数学/统计">数学/统计</option>
+                        <option value="社会学">社会学</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- 翻译区域 -->
+        <div class="translation-area">
+            <div class="panel input-panel">
+                <div class="panel-header">
+                    <span>原文</span>
+                    <div class="panel-actions">
+                        <span id="char-count">0 字符</span>
+                        <button id="btn-clear" title="清空">🗑️</button>
+                        <button id="btn-paste" title="粘贴">📋</button>
+                    </div>
+                </div>
+                <textarea id="source-text" placeholder="在这里输入或粘贴要翻译的文本...&#10;&#10;支持学术论文、日常对话、邮件等多种场景&#10;最多支持 10000 字符"></textarea>
+            </div>
+
+            <div class="middle-controls">
+                <button id="btn-translate" class="btn-primary">
+                    <span class="btn-text">翻 译</span>
+                    <span class="btn-loading" style="display:none;">⏳</span>
+                </button>
+                <button id="btn-terms" class="btn-secondary" title="提取术语">📖 术语</button>
+                <button id="btn-swap" class="btn-secondary" title="交换语言">🔄</button>
+            </div>
+
+            <div class="panel output-panel">
+                <div class="panel-header">
+                    <span>译文</span>
+                    <div class="panel-actions">
+                        <button id="btn-copy" title="复制">📄 复制</button>
+                    </div>
+                </div>
+                <div id="result-text" class="result-area">
+                    <p class="placeholder-text">翻译结果将显示在这里...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 术语表面板 -->
+        <div id="terms-panel" class="terms-panel" style="display:none;">
+            <div class="panel-header">
+                <span>📖 专业术语对照表</span>
+                <button id="btn-close-terms">✕</button>
+            </div>
+            <div id="terms-content" class="terms-content"></div>
+        </div>
+
+        <!-- 历史记录 -->
+        <div class="history-section">
+            <div class="section-header">
+                <h3>📝 翻译历史</h3>
+                <button id="btn-clear-history" class="btn-small">清空历史</button>
+            </div>
+            <div id="history-list" class="history-list">
+                <p class="placeholder-text">暂无翻译历史</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
